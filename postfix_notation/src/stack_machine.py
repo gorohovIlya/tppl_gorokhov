@@ -6,6 +6,16 @@ from src.exception import InvalidElementError, InvalidExpressionError
 
 
 class StackMachine:
+    """
+    Класс, реализующий Стек-машину.
+    Поля:
+        __body: deque[float,] - Тело стека. Использует deque из библиотеки collections
+        __operations: dict[str, MethodType] - Словарь методов, определённых в стек-машине.
+        __result: float - Результат вычислений
+        __expression: str - Выражение, значение которого необходимо вычислить
+        __traceback: str - Последовательность шагов вычисления. Хранит информацию вида "Шаг n. Cтек: ..."
+    """
+
     def __init__(self):
         self.__body: deque[float,] = deque()
         self.__operations: dict[str, MethodType] = {
@@ -20,6 +30,7 @@ class StackMachine:
         self.__traceback = ""
 
     def __validate_expression(self, expr: str):
+        """Валидация выражения, перед его записью в поле __expression для последующей работы"""
         if len(expr) == 0:
             raise InvalidExpressionError("Пустое выражение!")
         splitted_expression: list[str,] = expr.split(" ")
