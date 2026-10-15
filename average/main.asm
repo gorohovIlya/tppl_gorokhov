@@ -299,16 +299,13 @@ main:
     je .y_spaces
 
     cmp byte [rsi], 0
-
-    je .calculate_average
+    je .check_y_count
 
     cmp byte [rsi], 10
-
-    je .calculate_average
+    je .check_y_count
 
     cmp byte [rsi], 13
-
-    je .calculate_average
+    je .check_y_count
 
     jmp .corrupted
 
@@ -336,15 +333,15 @@ main:
 
     cmp byte [rsi], 0
 
-    je .calculate_average
+    je .check_y_count
 
     cmp byte [rsi], 10
 
-    je .calculate_average
+    je .check_y_count
 
     cmp byte [rsi], 13
 
-    je .calculate_average
+    je .check_y_count
 
     jmp .corrupted
 
@@ -381,6 +378,13 @@ main:
     inc rsi
 
     jmp .check_file_end_loop
+
+.check_y_count:
+
+    cmp rdi, r13
+    jne .corrupted
+
+    jmp .calculate_average
 
 .calculate_average:
 
