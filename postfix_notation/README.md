@@ -4,7 +4,7 @@ Python-реализация Стек-машины для вычисления в
 ## Использование
 
 ```bash
-python main.py <expression>
+python main.py "expression"
 ```
 
 ## Тестирование
