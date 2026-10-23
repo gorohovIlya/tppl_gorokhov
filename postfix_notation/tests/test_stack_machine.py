@@ -64,6 +64,13 @@ class TestStackMachine:
         machine.calculate()
         assert machine.result == 6
 
+    def test_power(self):
+        expr = "2 3 !"
+        machine = StackMachine()
+        machine.expression = expr
+        machine.calculate()
+        assert machine.result == 8
+
     def test_div(self):
         """Проверка операции /"""
         expr = "4 2 /"

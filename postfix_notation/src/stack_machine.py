@@ -24,6 +24,7 @@ class StackMachine:
             "/": self.__div,
             "*": self.__mul,
             "~": self.__tilda,
+            "!": self.__power
         }
         self.__result = 0
         self.__expression = ""
@@ -100,6 +101,11 @@ class StackMachine:
             while len(self.body) > 0:
                 res += self.__body.pop()
             self.__body.append(res**2)
+    
+    def __power(self, op1: float, op2: float) -> None:
+        """Операция !"""
+        res = op1 ** op2
+        self.__body.append(res)
 
     def calculate(self) -> None:
         """Вычисление результата"""
